@@ -79,7 +79,7 @@ public class DeckOfCards extends Players {
 			for(int i = 0; i < cardsOfPlayer.length-1; i++ ) {
 				for(int j = 0; j < cardsOfPlayer.length-i-1; j++) {
 					if(cardsOfPlayer[j].split(" ")[2].equals(cardsOfPlayer[j+1].split(" ")[2])) {
-						int result = checkRankIndex(cardsOfPlayer[j].split(" ")[0],cardsOfPlayer[j+1].split(" ")[2]);
+						int result = checkRankIndex(cardsOfPlayer[j].split(" ")[0],cardsOfPlayer[j+1].split(" ")[0]);
 						if(result == 1) {
 							String temp = cardsOfPlayer[j];
 							cardsOfPlayer[j] = cardsOfPlayer[j+1];
