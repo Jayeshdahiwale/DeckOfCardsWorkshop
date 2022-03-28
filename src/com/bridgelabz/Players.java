@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class Players {
 	
-	private String[] playersName = new String[4];
+	private String[] playersName;
 	
 	public void addingPlayer() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter the number of player");
 		int n = scan.nextInt();
+		playersName = new String[n];
 		if(n>4 || n<2) {
 			System.out.println("Enter player from 2 to 4");
 			addingPlayer();
@@ -25,14 +26,9 @@ public class Players {
 	public void playerSequence() {
 		
 		for(int i=0; i < playersName.length; i++) {
-			if(playersName[i] == null) {
-				break;
-			}
+		
 			for(int j = 0; j < playersName.length; j++) {
-				if(playersName[j] == null) {
-					continue;
-				}
-				if(playersName[i].hashCode() != playersName.hashCode()) {
+				if(playersName[i].hashCode() != playersName[j].hashCode()) {
 					if(playersName[i].length() > playersName[j].length()) {
 						String temp = playersName[j];
 						playersName[j] = playersName[i];
