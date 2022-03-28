@@ -1,6 +1,6 @@
 package com.bridgelabz;
 
-public class DeckOfCards {
+public class DeckOfCards extends Players {
 	
 	private String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
 	private String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
@@ -28,6 +28,7 @@ public class DeckOfCards {
 	    
 		DeckOfCards deckOfCards = new DeckOfCards();
 		deckOfCards.deckInitialize();
+		deckOfCards.addingPlayer();
 
 	}
 
