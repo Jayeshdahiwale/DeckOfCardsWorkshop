@@ -1,24 +1,23 @@
 package com.bridgelabz;
 
 public class DeckOfCards extends Players {
-    
-    private int[] freqCount = new int[4];
-    private String[] cardsOfEachPlayer;
+
+	private int[] freqCount = new int[4];
+	private String[] cardsOfEachPlayer;
 	private String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
 	private String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 	int n = suits.length * ranks.length;
+
 	public String[] deckInitialize() {
 		String[] deck = new String[this.n];
 		for (int i = 0; i < ranks.length; i++) {
 			for (int j = 0; j < suits.length; j++) {
 				deck[suits.length * i + j] = ranks[i] + " of " + suits[j];
-				
 			}
 		}
 		// Shuffling
 		deck = shuffleCard(deck);
 		return deck;
-
 	}
 
 	public String[] shuffleCard(String[] deck) {
@@ -30,35 +29,34 @@ public class DeckOfCards extends Players {
 		}
 		return deck;
 	}
-	
+
 	public int checkRankIndex(String a, String b) {
 		int index1 = 0;
 		int index2 = 0;
-		for(int i = 0; i < ranks.length; i++) {
-			if(a.equals(ranks[i])) {
+		for (int i = 0; i < ranks.length; i++) {
+			if (a.equals(ranks[i])) {
 				index1 = i;
 			}
-			if(b.equals(ranks[i])) {
+			if (b.equals(ranks[i])) {
 				index2 = i;
 			}
 		}
-		if(index1 > index2) {
+		if (index1 > index2) {
 			return 1;
-		}
-		else {
+		} else {
 			return 0;
 		}
 	}
 
 	int[] CardsIndex(int player) {
-		int[] cardIndex = new int[player*9]; /// Initialize array with numbers
-		for(int k=0; k < player*9; k++) {
+		int[] cardIndex = new int[player * 9]; /// Initialize array with numbers
+		for (int k = 0; k < player * 9; k++) {
 			cardIndex[k] = 52;
 		}
 		int i = 0;
 		int min = 0;
 		int max = 51;
-		while (i < player*9) {
+		while (i < player * 9) {
 			int condition = 0;
 			int randomIndex = (int) Math.floor(Math.random() * (max - min) + min);
 			for (int j = 0; j < cardIndex.length; j++) {
@@ -71,25 +69,25 @@ public class DeckOfCards extends Players {
 				cardIndex[i] = randomIndex;
 				i += 1;
 			}
-		} 
+		}
 		return cardIndex;
 	}
-	
+
 	private String[] sortingCards(String[] cardsOfPlayer) {
-			for(int i = 0; i < cardsOfPlayer.length-1; i++ ) {
-				for(int j = 0; j < cardsOfPlayer.length-i-1; j++) {
-					if(cardsOfPlayer[j].split(" ")[2].equals(cardsOfPlayer[j+1].split(" ")[2])) {
-						int result = checkRankIndex(cardsOfPlayer[j].split(" ")[0],cardsOfPlayer[j+1].split(" ")[0]);
-						if(result == 1) {
-							String temp = cardsOfPlayer[j];
-							cardsOfPlayer[j] = cardsOfPlayer[j+1];
-							cardsOfPlayer[j+1] = temp;
-						}
+		for (int i = 0; i < cardsOfPlayer.length - 1; i++) {
+			for (int j = 0; j < cardsOfPlayer.length - i - 1; j++) {
+				if (cardsOfPlayer[j].split(" ")[2].equals(cardsOfPlayer[j + 1].split(" ")[2])) {
+					int result = checkRankIndex(cardsOfPlayer[j].split(" ")[0], cardsOfPlayer[j + 1].split(" ")[0]);
+					if (result == 1) {
+						String temp = cardsOfPlayer[j];
+						cardsOfPlayer[j] = cardsOfPlayer[j + 1];
+						cardsOfPlayer[j + 1] = temp;
 					}
 				}
 			}
-			return cardsOfPlayer;
-		
+		}
+		return cardsOfPlayer;
+
 	}
 
 	public void distribution() {
@@ -99,7 +97,7 @@ public class DeckOfCards extends Players {
 		/// Distribution among four players
 		for (int i = 1; i < player.length + 1; i++) {
 			System.out.println("Player " + player[i - 1] + " Cards :");
-			cardsOfEachPlayer = new String[(cardIndex.length/player.length)];
+			cardsOfEachPlayer = new String[(cardIndex.length / player.length)];
 			int p = 0;
 			for (int j = i - 1; j < cardIndex.length; j = j + player.length) {
 				System.out.printf("|| %s    ", deck[j]);
@@ -109,33 +107,34 @@ public class DeckOfCards extends Players {
 			}
 			String[] sortedCards = sortingCards(cardsOfEachPlayer);
 			System.out.println();
-			for(String cards: sortedCards) {
-				System.out.print( cards + "  " + "||");
+			System.out.println("Sorted");
+			for (String cards : sortedCards) {
+				System.out.print(cards + "  " + "||");
 			}
 			System.out.println();
 			int k = 0;
-			for(int count: freqCount) {
-				System.out.printf(suits[k]+ ":" + count + "  ");
+			for (int count : freqCount) {
+				System.out.printf(suits[k] + ":" + count + "  ");
 				k++;
 			}
 			freqCount = new int[4];
 			System.out.println();
 		}
 	}
-	
+
 	public void freqCounter(String deck) {
 		String[] splittedDeck = deck.split(" ");
-		for(String suit: splittedDeck) {
-			if(suit.equals("Clubs")) {
+		for (String suit : splittedDeck) {
+			if (suit.equals("Clubs")) {
 				freqCount[0]++;
 			}
-			if(suit.equals("Diamonds")) {
+			if (suit.equals("Diamonds")) {
 				freqCount[1]++;
 			}
-			if(suit.equals("Hearts")) {
+			if (suit.equals("Hearts")) {
 				freqCount[2]++;
 			}
-			if(suit.equals("Spades")) {
+			if (suit.equals("Spades")) {
 				freqCount[3]++;
 			}
 		}
