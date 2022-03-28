@@ -8,7 +8,7 @@ public class DeckOfCards extends Players {
 	private String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 	int n = suits.length * ranks.length;
 
-	public String[] deckInitialize() {
+	private String[] deckInitialize() {
 		String[] deck = new String[this.n];
 		for (int i = 0; i < ranks.length; i++) {
 			for (int j = 0; j < suits.length; j++) {
@@ -20,7 +20,7 @@ public class DeckOfCards extends Players {
 		return deck;
 	}
 
-	public String[] shuffleCard(String[] deck) {
+	private String[] shuffleCard(String[] deck) {
 		for (int i = 0; i < n; i++) {
 			int r = i + (int) (Math.random() * (n - i));
 			String temp = deck[r];
@@ -30,7 +30,7 @@ public class DeckOfCards extends Players {
 		return deck;
 	}
 
-	public int checkRankIndex(String a, String b) {
+	private int checkRankIndex(String a, String b) {
 		int index1 = 0;
 		int index2 = 0;
 		for (int i = 0; i < ranks.length; i++) {
@@ -48,7 +48,7 @@ public class DeckOfCards extends Players {
 		}
 	}
 
-	int[] CardsIndex(int player) {
+	private int[] CardsIndex(int player) {
 		int[] cardIndex = new int[player * 9]; /// Initialize array with numbers
 		for (int k = 0; k < player * 9; k++) {
 			cardIndex[k] = 52;
@@ -122,7 +122,7 @@ public class DeckOfCards extends Players {
 		}
 	}
 
-	public void freqCounter(String deck) {
+	private void freqCounter(String deck) {
 		String[] splittedDeck = deck.split(" ");
 		for (String suit : splittedDeck) {
 			if (suit.equals("Clubs")) {
@@ -145,7 +145,5 @@ public class DeckOfCards extends Players {
 		DeckOfCards deckOfCards = new DeckOfCards();
 		deckOfCards.distribution();
 		// String[] deck = deckOfCards.deckInitialize();
-
 	}
-
 }
