@@ -29,7 +29,7 @@ public class Players {
 
 			for (int j = 0; j < playersName.length - i - 1; j++) {
 				if (playersName[j].length() > playersName[j+1].length()) {
-					String temp = playersName[j+1];
+					String temp = playersName[j];
 					playersName[j] = playersName[j+1];
 					playersName[j+1] = temp;
 				}
