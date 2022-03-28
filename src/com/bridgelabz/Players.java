@@ -23,8 +23,8 @@ public class Players {
 		}
 	}
 	
-	public void playerSequence() {
-		
+	public String[] playerSequence() {
+		addingPlayer();
 		for(int i=0; i < playersName.length; i++) {
 		
 			for(int j = 0; j < playersName.length; j++) {
@@ -37,7 +37,7 @@ public class Players {
 				}
 			}
 		}
-		
+		return playersName;
 	}
 		
 }
