@@ -1,7 +1,8 @@
 package com.bridgelabz;
 
 public class DeckOfCards extends Players {
-
+    
+    private int[] freqCount = new int[4];
 	private String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
 	private String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 	int n = suits.length * ranks.length;
@@ -11,6 +12,7 @@ public class DeckOfCards extends Players {
 		for (int i = 0; i < ranks.length; i++) {
 			for (int j = 0; j < suits.length; j++) {
 				deck[suits.length * i + j] = ranks[i] + " of " + suits[j];
+				
 			}
 		}
 		// Shuffling
@@ -61,8 +63,32 @@ public class DeckOfCards extends Players {
 			System.out.println("Player " + player[i - 1] + " Cards :");
 			for (int j = i - 1; j < cardIndex.length; j = j + player.length) {
 				System.out.printf("|| %s    ", deck[j]);
+				freqCounter(deck[j]);
 			}
 			System.out.println();
+			for(int count: freqCount) {
+				System.out.printf(suits[count]+ ":" + count + "  ");
+			}
+			freqCount = new int[4];
+			System.out.println();
+		}
+	}
+	
+	public void freqCounter(String deck) {
+		String[] splittedDeck = deck.split(" ");
+		for(String suit: splittedDeck) {
+			if(suit.equals("Clubs")) {
+				freqCount[0]++;
+			}
+			if(suit.equals("Diamonds")) {
+				freqCount[1]++;
+			}
+			if(suit.equals("Hearts")) {
+				freqCount[2]++;
+			}
+			if(suit.equals("Spades")) {
+				freqCount[3]++;
+			}
 		}
 	}
 
