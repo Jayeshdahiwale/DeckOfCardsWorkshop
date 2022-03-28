@@ -66,8 +66,10 @@ public class DeckOfCards extends Players {
 				freqCounter(deck[j]);
 			}
 			System.out.println();
+			int k = 0;
 			for(int count: freqCount) {
-				System.out.printf(suits[count]+ ":" + count + "  ");
+				System.out.printf(suits[k]+ ":" + count + "  ");
+				k++;
 			}
 			freqCount = new int[4];
 			System.out.println();
